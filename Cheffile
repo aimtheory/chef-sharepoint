@@ -1,0 +1,10 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+site 'http://community.opscode.com/api/v1'
+
+cookbook 'chef-client'
+cookbook 'windows'
+
+cookbook 'sql_server', :git => "https://github.com/aimtheory/sql_server", :ref => "vagrant-windows-fix"
+
+cookbook 'sharepoint', :path => "../../site-cookbooks/sharepoint"

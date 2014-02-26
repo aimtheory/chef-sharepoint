@@ -1,0 +1,26 @@
+*~
+
+# ignore bundler state and gems
+.bundle/
+vendor/bundle/
+vendor/downloads/
+bin/
+
+# by default, exclude all cookbooks
+/cookbooks/*/
+/tmp/
+
+# ignore librarian-chef state
+.librarian
+
+# ignore vagrant state
+.vagrant
+
+# ignore test kitchen state
+.kitchen
+
+# ignore exported vagrant boxes
+*.box
+
+Gemfile.lock
+Cheffile.lock
