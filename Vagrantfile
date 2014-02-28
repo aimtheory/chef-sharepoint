@@ -24,7 +24,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       v.gui = true
     end
 
-    sql.vm.network :private_network, ip: "192.168.50.10"
+    sql.vm.network :private_network, ip: "192.168.56.10"
     sql.vm.network :forwarded_port, guest: 3389, host: 33389
     sql.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
 
@@ -57,7 +57,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       v.gui = true
     end
     
-    sharepoint.vm.network :private_network, ip: "192.168.50.11"
+    sharepoint.vm.network :private_network, ip: "192.168.56.11"
     sharepoint.vm.network :forwarded_port, guest: 3389, host: 43389
     sharepoint.vm.network :forwarded_port, guest: 5985, host: 45985, id: "winrm", auto_correct: true
 
@@ -71,7 +71,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.data_bags_path = provisioner[:databags]
       chef.arguments = '-l debug'
       chef.run_list = [
-        "recipe[windows::reboot_handler]",
         "recipe[sharepoint::prerequisites]"
       ]
       chef.json = {
