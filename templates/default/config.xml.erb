@@ -6,7 +6,7 @@
     <Setting Id="SETUPCALLED" Value="1" />
   </Package>
   <Logging Type="verbose" Path="C:\SHAREPT" Template="SharePoint Server Setup(*).log" />
-  <PIDKEY Value="<%= node[:sharepoint][:pid_key] %>" />
+  <PIDKEY Value="<%= @pid_key %>" />
   <Display Level="none" CompletionNotice="no" />
   <Setting Id="SERVERROLE" Value="APPLICATION" />
   <Setting Id="USINGUIINSTALLMODE" Value="0" />

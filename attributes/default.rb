@@ -1,15 +1,39 @@
 # SQL
-default[:sharepoint][:sql][:hostname] = "vagrant-2008R2"
+default[:sharepoint][:sql][:hostname] = "sql"
 default[:sharepoint][:sql][:port] = "1433"
 default[:sharepoint][:sql][:user] = "sa"
 
 default[:sharepoint][:pid_key] = "NQTMW-K63MQ-39G6H-B2CH9-FRDWJ"
 
 # User accounts
+default[:sharepoint][:domain] = "iantest.com"
 default[:sharepoint][:domain_admin] = "iarossi"
-default[:sharepoint][:web_farm_acct] = "#{node['domain']}\sp2013-farm"
-default[:sharepoint][:webapp_farm_acct] = "#{node['domain']}\sp2013-ap-webapp"
-default[:sharepoint][:svc_farm_acct] = "#{node['domain']}\sp2013-ap-service"
+default[:sharepoint][:farm_accounts] = {
+  "sp2013-farm" => {
+    "upn" => "sp2013-farm@#{node['domain']}",
+    "fn" => "Farm",
+    "ln" => "Account",
+    "display" => "Farm Account",
+    "disabled" => "no",
+    "pwd" => "Passw0rd"
+  },
+  "sp2013-ap-webapp" => {
+    "upn" => "sp2013-ap-webapp@#{node['domain']}",
+    "fn" => "Farm Web App",
+    "ln"=> "Account",
+    "display" =>"Farm Web App Account",
+    "disabled" => "no",
+    "pwd" => "Passw0rd"
+  },
+  "sp2013-ap-service" => {
+    "upn" => "sp2013-ap-service@#{node['domain']}",
+    "fn" => "Farm Web App Service",
+    "ln"=> "Account",
+    "display" =>"Farm Web App Service Account",
+    "disabled" => "no",
+    "pwd" => "Passw0rd"
+  },
+}
 
 # Sharepoint configuration info
 default[:sharepoint][:config][:passphrase] = "Sharepoint 2013"

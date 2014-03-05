@@ -1,5 +1,4 @@
 include_recipe "windows::reboot_handler"
-include_recipe "7-zip"
 
 # All prereqs must be installed in a specific order which
 # precludes easily iterating over a list packages. Therefore,
@@ -15,6 +14,9 @@ windows_package "dotNetFx45_Full_setup.exe" do
 end
 
 # Install Windows Management Framework 3.0
+remote_file "#{Chef::Config[:file_cache_path]}/Windows6.1-KB2506143-x64.msu" do
+  source "http://192.168.2.6/Windows6.1-KB2506143-x64.msu"
+end
 powershell_script "Windows6.1-KB2506143-x64.msu" do
   cwd Chef::Config[:file_cache_path]
   code "wusa #{Chef::Config[:file_cache_path]}/Windows6.1-KB2506143-x64.msu /quiet"
@@ -32,11 +34,14 @@ end
 windows_package "sqlncli.msi" do
   source "http://192.168.2.6/sqlncli.msi"
   installer_type :custom
-  options "/quiet"
+  options "/quiet /forcerestart"
   action :install
 end
 
 # Install Windows Identity Foundation
+remote_file "#{Chef::Config[:file_cache_path]}/Windows6.1-KB974405-x64.msu" do
+  source "http://192.168.2.6/Windows6.1-KB974405-x64.msu.msu"
+end
 powershell_script "Windows6.1-KB974405-x64.msu" do
   cwd Chef::Config[:file_cache_path]
   code "wusa #{Chef::Config[:file_cache_path]}/Windows6.1-KB974405-x64.msu /quiet"
@@ -47,6 +52,7 @@ end
 windows_package "Synchronization.msi" do
   source "http://192.168.2.6/Synchronization.msi"
   installer_type :msi
+  options "/forcerestart"
   action :install
 end
 
@@ -54,7 +60,7 @@ end
 windows_package "MicrosoftIdentityExtensions-64.msi" do
   source "http://192.168.2.6/MicrosoftIdentityExtensions-64.msi"
   installer_type :custom
-  options "/quiet"
+  options "/quiet /forcerestart"
   action :install
 end
 
@@ -62,6 +68,7 @@ end
 windows_package "setup_msipc_x64.msi" do
   source "http://192.168.2.6/setup_msipc_x64.msi"
   installer_type :msi
+  options "/forcerestart"
   action :install
 end
 
@@ -69,7 +76,7 @@ end
 windows_package "WcfDataServices.exe" do
   source "http://192.168.2.6/WcfDataServices.exe"
   installer_type :custom
-  options "/quiet"
+  options "/quiet /forcerestart"
   action :install
 end
 
@@ -85,9 +92,7 @@ end
 windows_package "AppFabric1.1-RTM-KB2671763-x64-ENU.exe" do
   source "http://192.168.2.6/AppFabric1.1-RTM-KB2671763-x64-ENU.exe"
   installer_type :custom
-  options "/quiet"
+  options "/quiet /forcerestart"
   action :install
 end
-
-
 

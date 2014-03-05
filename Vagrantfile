@@ -49,7 +49,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     sharepoint.vm.box = "win2k8"
     sharepoint.vm.guest = :windows
     sharepoint.windows.halt_timeout = 30
-    sharepoint.winrm.username = "vagrant"
+    sharepoint.winrm.username = "Administrator"
     sharepoint.winrm.password = "vagrant"
     sharepoint.vm.provider "virtualbox" do |v|
       v.memory = 1024
@@ -71,7 +71,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.data_bags_path = provisioner[:databags]
       chef.arguments = '-l debug'
       chef.run_list = [
-        "recipe[sharepoint::prerequisites]"
+        "recipe[sharepoint::default]"
       ]
       chef.json = {
       }
