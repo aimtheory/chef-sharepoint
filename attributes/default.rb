@@ -7,7 +7,7 @@ default[:sharepoint][:pid_key] = "NQTMW-K63MQ-39G6H-B2CH9-FRDWJ"
 
 # User accounts
 default[:sharepoint][:domain] = "iantest.com"
-default[:sharepoint][:domain_admin] = "iarossi"
+default[:sharepoint][:domain_admin] = "Administrator"
 default[:sharepoint][:farm_accounts] = {
   "sp2013-farm" => {
     "upn" => "sp2013-farm@#{node['domain']}",
@@ -15,7 +15,7 @@ default[:sharepoint][:farm_accounts] = {
     "ln" => "Account",
     "display" => "Farm Account",
     "disabled" => "no",
-    "pwd" => "Passw0rd"
+    "pwd" => "Passw0rd!"
   },
   "sp2013-ap-webapp" => {
     "upn" => "sp2013-ap-webapp@#{node['domain']}",
@@ -23,7 +23,7 @@ default[:sharepoint][:farm_accounts] = {
     "ln"=> "Account",
     "display" =>"Farm Web App Account",
     "disabled" => "no",
-    "pwd" => "Passw0rd"
+    "pwd" => "Passw0rd!"
   },
   "sp2013-ap-service" => {
     "upn" => "sp2013-ap-service@#{node['domain']}",
@@ -31,7 +31,7 @@ default[:sharepoint][:farm_accounts] = {
     "ln"=> "Account",
     "display" =>"Farm Web App Service Account",
     "disabled" => "no",
-    "pwd" => "Passw0rd"
+    "pwd" => "Passw0rd!"
   },
 }
 
