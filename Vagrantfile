@@ -38,8 +38,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.data_bags_path = provisioner[:databags]
       #chef.arguments = '-l debug'
       chef.run_list = [
-        "recipe[sharepoint::sql_server]",
-        "recipe[sharepoint::prerequisites]
+#        "recipe[sharepoint::sql_server]",
+        "recipe[sharepoint::prerequisites]"
       ]
       chef.json = {
       }

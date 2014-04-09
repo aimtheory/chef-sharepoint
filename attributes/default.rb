@@ -1,4 +1,5 @@
 # SQL
+default[:sql_server][:accept_eula] = true
 default[:sharepoint][:sql][:hostname] = "sql"
 default[:sharepoint][:sql][:port] = "1433"
 default[:sharepoint][:sql][:user] = "sa"
