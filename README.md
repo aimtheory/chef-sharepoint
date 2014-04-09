@@ -1,23 +1,15 @@
 sharepoint Cookbook
 ===================
-TODO: Enter the cookbook description here.
-
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+This cookbook installs and configure Microsoft SharePoint 2013. Everything is pre-release and work-in-progress.
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
+There must already be an existing domain controller and farm accounts. The domain and farm accounts can be indicated in attributes as shown below.
 
-e.g.
-#### packages
-- `toaster` - sharepoint needs toaster to brown your bagel.
 
 Attributes
 ----------
-TODO: List your cookbook attributes here.
 
-e.g.
 #### sharepoint::default
 <table>
   <tr>
@@ -27,11 +19,54 @@ e.g.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['sharepoint']['bacon']</tt></td>
+    <td><tt>[:sql_server][:accept_eula]</tt></td>
     <td>Boolean</td>
-    <td>whether to include bacon</td>
+    <td>Whether to accept the SQL Server EULA</td>
     <td><tt>true</tt></td>
   </tr>
+  <tr>
+    <td><tt>[:sharepoint][:sql][:hostname]</tt></td>
+    <td>String</td>
+    <td>The hostname of the SQL Server to use for the SharePoint installation</td>
+    <td><tt>sql</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:sharepoint][:sql][:port]</tt></td>
+    <td>String</td>
+    <td>The port number of the SQL Server to use for the SharePoint installation</td>
+    <td><tt>1433</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:sharepoint][:sql][:user]</tt></td>
+    <td>String</td>
+    <td>The user of the SQL Server to use for the SharePoint installation</td>
+    <td><tt>sa</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:sharepoint][:pid_key]</tt></td>
+    <td>String</td>
+    <td>The PID key to use for the SharePoint installation</td>
+    <td><tt>NQTMW-K63MQ-39G6H-B2CH9-FRDWJ</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:sharepoint][:domain]</tt></td>
+    <td>String</td>
+    <td>The domain where SharePoint is being installed</td>
+    <td><tt>example.com</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:sharepoint][:farm_accounts]</tt></td>
+    <td>Hash</td>
+    <td>A hash table of the farm accounts to use for the SharePoint farm creation</td>
+    <td><tt>sp2013-farm, sp2013-ap-webapp and sp2013-ap-service</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:sharepoint][:config][:passphrase]</tt></td>
+    <td>String</td>
+    <td>The PID key to use for the SharePoint installation</td>
+    <td><tt>NQTMW-K63MQ-39G6H-B2CH9-FRDWJ</tt></td>
+  </tr>
+  
 </table>
 
 Usage
