@@ -129,7 +129,7 @@ Downloads all prerequisites for SharePoint 2013 on Windows Server 2008 R2 from a
 #### sharepoint::install
 Downloads the SharePoint 2013 img file from the pre-loaded repo and installs SharePoint 2013.
 
-#### sharepoint::configures
+#### sharepoint::configure
 Creates and configures the SharePoint 2013 farm and the Central Administration site.
 
 Usage
