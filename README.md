@@ -63,9 +63,40 @@ Attributes
   <tr>
     <td><tt>[:sharepoint][:config][:passphrase]</tt></td>
     <td>String</td>
-    <td>The PID key to use for the SharePoint installation</td>
+    <td>The configuration passphrase for the SharePoint installation</td>
+    <td><tt>SharePoint 2013</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:sharepoint][:config][:db]</tt></td>
+    <td>String</td>
+    <td>The name of configuration database for the SharePoint installation</td>
+    <td><tt>SP2013_Configuration</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:sharepoint][:central_admin][:db]</tt></td>
+    <td>String</td>
+    <td>The Central Administration database name for SharePoint installation</td>
+    <td><tt>SP2013_Content_Central_Administration</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:sharepoint][:central_admin][:auth]</tt></td>
+    <td>String</td>
+    <td>The auth type to use for the SharePoint installation</td>
+    <td><tt>NTLM</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:sharepoint][:windows_features]</tt></td>
+    <td>Array</td>
+    <td>An array of Windows features name to install as SharePoint prerequisites</td>
+    <td><tt>AppServer, IIS-WebServerRole, IIS-WebServer</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:sharepoint][:config][:passphrase]</tt></td>
+    <td>String</td>
+    <td>The configuration passphrase for SharePoint installation</td>
     <td><tt>NQTMW-K63MQ-39G6H-B2CH9-FRDWJ</tt></td>
   </tr>
+  
   
 </table>
 
