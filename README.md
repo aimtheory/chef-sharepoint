@@ -1,11 +1,14 @@
 sharepoint Cookbook
 ===================
-This cookbook installs and configure Microsoft SharePoint 2013. Everything is pre-release and work-in-progress.
+This cookbook installs and configures Microsoft SharePoint 2013. Everything is pre-release and work-in-progress.
 
 Requirements
 ------------
 There must already be an existing domain controller and farm accounts. The domain and farm accounts can be indicated in attributes as shown below.
 
+Platforms
+----------
+This cookbook initially ONLY supports SharePoint 2013 on Windows Server 2008 R2. Windows Server 2012 has different prerequisites. This cookbook will not work with Windows Server 2012.
 
 Attributes
 ----------
@@ -91,37 +94,61 @@ Attributes
     <td><tt>AppServer, IIS-WebServerRole, IIS-WebServer</tt></td>
   </tr>
   <tr>
-    <td><tt>[:sharepoint][:config][:passphrase]</tt></td>
+    <td><tt>[:sharepoint][:download_url]</tt></td>
     <td>String</td>
-    <td>The configuration passphrase for SharePoint installation</td>
-    <td><tt>NQTMW-K63MQ-39G6H-B2CH9-FRDWJ</tt></td>
+    <td>The download URL for the SharePoint 2013 img file</td>
+    <td><tt>empty</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:sharepoint][:config_path]</tt></td>
+    <td>String</td>
+    <td>The configuration file path for SharePoint installation</td>
+    <td><tt>#{Chef::Config[:file_cache_path]}/config.xml</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:sharepoint][:prereq_packages]</tt></td>
+    <td>Hash</td>
+    <td>This is a hash table of all the software packages that are prerequisites for SharePoint 2013 on Windows 2008 R2.</td>
+    <td><tt>Please see the default.rb attribute file.</tt></td>
   </tr>
   
   
 </table>
 
+Recipes
+-----
+#### sharepoint::default.rb
+Does nothing
+
+#### sharepoint::sql_server
+Installs SQL Server
+
+#### sharepoint::prerequisites
+Downloads all prerequisites for SharePoint 2013 on Windows Server 2008 R2 from a pre-loaded repository (already set up by the user) and installs them.
+
+#### sharepoint::install
+Downloads the SharePoint 2013 img file from the pre-loaded repo and installs SharePoint 2013.
+
+#### sharepoint::configures
+Creates and configures the SharePoint 2013 farm and the Central Administration site.
+
 Usage
 -----
-#### sharepoint::default
-TODO: Write usage instructions for each cookbook.
 
 e.g.
-Just include `sharepoint` in your node's `run_list`:
+Just include a recipe in your node's `run_list`:
 
 ```json
 {
   "name":"my_node",
   "run_list": [
-    "recipe[sharepoint]"
+    "recipe[sharepoint::prerequisites]"
   ]
 }
 ```
 
 Contributing
 ------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
-
-e.g.
 1. Fork the repository on Github
 2. Create a named feature branch (like `add_component_x`)
 3. Write your change
@@ -131,4 +158,5 @@ e.g.
 
 License and Authors
 -------------------
-Authors: TODO: List authors
+License: Apache License 2.0
+Author: Ian D. Rossi
